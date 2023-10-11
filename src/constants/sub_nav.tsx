@@ -2,27 +2,27 @@ export const list_data = [
   {
     id: 1,
     title: "Today's Deals",
-    link: "/",
+    link: "#",
   },
   {
     id: 2,
     title: "Customer Service",
-    link: "/",
+    link: "#",
   },
   {
     id: 3,
     title: "Registry",
-    link: "/",
+    link: "#",
   },
   {
     id: 4,
     title: "Gift Cards",
-    link: "/",
+    link: "#",
   },
   {
     id: 5,
     title: "Sell",
-    link: "/",
+    link: "#",
   },
 ];
 

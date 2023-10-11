@@ -1,20 +1,32 @@
 import { useId } from "react";
-import { Button } from "@/components/Globe/Button";
-import { Div } from "@/components/Globe/Div";
 import { categories } from "@/constants/categories";
 import { search_history } from "@/constants/search-history";
-import { BsSearch } from "react-icons/bs";
+import SelectComp from "@/components/Select";
 import Select from "react-select";
+import { BsSearch } from "react-icons/bs";
 
 export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
   const randId = useId();
   return (
-    <Div
+    <section
       className={`flex-1 items-center px-2 ${
         fromMenu ? "!flex justify-center sm:!hidden" : "!hidden sm:!flex"
       }`}
     >
-      <Select
+      <SelectComp
+        className="w-full min-w-[100px] max-w-[180px] h-[38px] rounded-s-md"
+        options={[
+          { value: "all", label: "All Departments" },
+          ...(categories as any),
+        ]}
+      />
+      {/* <input
+        type="text"
+        name="search"
+        placeholder="Search Amazon"
+        className="flex-1 h-[40px] px-2 py-1 text-black bg-white border border-gray-300 focus:outline-none focus"
+      /> */}
+      {/* <Select
         instanceId={randId}
         className="text-black w-[130px]"
         isSearchable={false}
@@ -32,10 +44,10 @@ export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
             textWrap: "nowrap",
           }),
         }}
-      />
+      /> */}
       <Select
         instanceId={randId}
-        className="flex-1 text-black"
+        className="flex-1 min-w-[150px] text-black"
         placeholder="Search Amazon"
         value={""}
         onChange={() => {}}
@@ -48,11 +60,11 @@ export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
           }),
         }}
       />
-      <Div className="flex items-center">
-        <Button className="h-[38px] rounded">
+      <div className="flex items-center">
+        <button className="p-2 px-4 h-[38px] rounded-e-md flex items-center justify-center bg-primary_orange text-primary_black hover:bg-secondary_yellow">
           <BsSearch />
-        </Button>
-      </Div>
-    </Div>
+        </button>
+      </div>
+    </section>
   );
 }

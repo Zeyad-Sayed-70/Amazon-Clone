@@ -1,7 +1,4 @@
 import Link from "next/link";
-import { FlexBox } from "../Styled/Navbar,";
-import { T4 } from "@/components/Globe/Titles";
-import { C3 } from "@/components/Globe/Contents";
 
 export default function ReturnOrders({
   fromMenu = false,
@@ -9,15 +6,19 @@ export default function ReturnOrders({
   fromMenu?: boolean;
 }) {
   return (
-    <FlexBox
-      className={`mr-3 ${
-        fromMenu ? "!flex justify-center lg:!hidden" : "!hidden lg:!flex"
-      }`}
+    <section
+      className={`
+      items-center gap-2 px-2 py-1 hover:shadow-hover mr-3 
+      ${fromMenu ? "!flex justify-center lg:!hidden" : "!hidden lg:!flex"}`}
     >
       <Link href={"/retrun"}>
-        <C3 color="grey_original">Return</C3>
-        <T4 color="primary_white">& Orders</T4>
+        <span className="text-small" color="grey_original">
+          Return
+        </span>
+        <h2 className="text-medium font-bold" color="primary_white">
+          & Orders
+        </h2>
       </Link>
-    </FlexBox>
+    </section>
   );
 }
