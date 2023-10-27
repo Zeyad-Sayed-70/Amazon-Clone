@@ -57,7 +57,7 @@ export default function MultiCarousel({
           </button>
 
           {products
-            .sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
+            ?.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
             .map((product) => (
               <div key={product.id} className="p-4 w-[320px] ">
                 <Link href={`/product/${product.id}`}>
