@@ -1,20 +1,16 @@
-import React from "react";
-
-declare let window: any;
+"use client";
+import { useEffect, useState } from "react";
 
 export default function useWindowWidth() {
-  try {
-    const [width, setWidth] = React.useState(window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
 
-    React.useEffect(() => {
-      if (!window.location) return;
-      const handleResize = () => setWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
+  useEffect(() => {
+    if (!window.location) return;
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  if (typeof window !== "undefined") {
     return width;
-  } catch (e) {
-    return null;
   }
 }

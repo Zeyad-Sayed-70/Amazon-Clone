@@ -19,7 +19,7 @@ export default function useCategories({
     )
       .then((res) => res.json())
       .then((json) => setProducts(json.products));
-  }, []);
+  }, [setProducts, category, limit, select]);
 
-  return { products, setProducts };
+  return { products, setProducts, limit, select };
 }

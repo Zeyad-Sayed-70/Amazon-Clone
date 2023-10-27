@@ -30,7 +30,7 @@ export default function Index() {
     setProducts(data);
     setProductsInstance(data);
     setLoading(false);
-  }, [data]);
+  }, [data, setProducts, setProductsInstance, setLoading]);
 
   return (
     <main className="lg:flex gap-4 p-3 lg:p-0 bg-primary_white">

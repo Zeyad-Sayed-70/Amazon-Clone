@@ -144,7 +144,7 @@ function Form() {
         {step === 1 ? "Continue" : "Login"}
       </button>
       <p className="text-small my-6">
-        By continuing, you agree to Amazon's{" "}
+        By continuing, you agree to Amazon{"'"}s{" "}
         <span className="text-secondary_blue hover:text-secondary_red cursor-pointer">
           Conditions of Use
         </span>{" "}

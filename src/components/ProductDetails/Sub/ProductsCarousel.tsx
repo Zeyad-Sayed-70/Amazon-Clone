@@ -32,13 +32,13 @@ export default function ProductsCarousel({ skip = 10 }: { skip: number }) {
           className="flex scrollbar-hidden h-[350px] gap-3 items-center overflow-x-scroll md:overflow-hidden mt-2 mb-2 pb-2"
         >
           <button
-            onClick={() => scrollTo(width > 1190 ? -332 * 4 : -332)}
+            onClick={() => scrollTo(width && width > 1190 ? -332 * 4 : -332)}
             className="flex justify-center items-center h-[60px] absolute left-4 top-[40%] px-2 pl-5 text-primary_black opacity-20 md:opacity-50 bg-grey_original rounded-md hover:bg-grey_dark md:hover:opacity-70"
           >
             <MdArrowBackIos style={{ fontSize: "1.2rem" }} />
           </button>
           <button
-            onClick={() => scrollTo(width > 1190 ? 332 * 4 : 332)}
+            onClick={() => scrollTo(width && width > 1190 ? 332 * 4 : 332)}
             className="flex justify-center items-center h-[60px] absolute right-4 top-[40%] px-3 text-primary_black opacity-20 md:opacity-50 bg-grey_original rounded-md hover:bg-grey_dark md:hover:opacity-70"
           >
             <MdArrowForwardIos style={{ fontSize: "1.2rem" }} />

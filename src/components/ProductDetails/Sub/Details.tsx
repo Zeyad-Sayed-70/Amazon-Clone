@@ -74,8 +74,8 @@ function ProductImages() {
       </ul>
 
       <Image
-        onMouseEnter={() => width > 1280 && setIsImageHoverd(true)}
-        onMouseLeave={() => width > 1280 && setIsImageHoverd(false)}
+        onMouseEnter={() => width && width > 1280 && setIsImageHoverd(true)}
+        onMouseLeave={() => width && width > 1280 && setIsImageHoverd(false)}
         onMouseMove={(e) => handleMouseMove(e)}
         className="max-w-full md:max-w-[500px] h-[420px] object-contain p-3 xl:cursor-crosshair"
         width={400}

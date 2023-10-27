@@ -13,7 +13,7 @@ export default function useProducts({
     fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
       .then((res) => res.json())
       .then((json) => setProducts(json.products));
-  }, []);
+  }, [limit, skip]);
 
   return { products, setProducts };
 }

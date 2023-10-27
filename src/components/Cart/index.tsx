@@ -2,8 +2,13 @@
 import React, { lazy, Suspense } from "react";
 import ProductCart from "@/components/Cart/Sub/ProductCart";
 import { LocalStateContext } from "@/context/localStorage";
+import dynamic from "next/dynamic";
 
-const MultiCarousel = lazy(() => import("@/components/Home/Sub/MultiCarousel"));
+const MultiCarousel = dynamic(
+  () => import("@/components/Home/Sub/MultiCarousel"),
+  { ssr: false }
+);
+// const MultiCarousel = lazy(() => import("@/components/Home/Sub/MultiCarousel"));
 const TopSellersProducts = lazy(() => import("./Sub/TopSellersProducts"));
 
 export default function Index() {

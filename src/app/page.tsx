@@ -1,8 +1,14 @@
 "use client";
 import Categories from "@/components/Home";
 import DemoCarousel from "@/components/Home/Sub/Carousel";
-import MultiCarousel from "@/components/Home/Sub/MultiCarousel";
+// import MultiCarousel from "@/components/Home/Sub/MultiCarousel";
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const MultiCarousel = dynamic(
+  () => import("@/components/Home/Sub/MultiCarousel"),
+  { ssr: false }
+);
 
 export default function Home() {
   return (

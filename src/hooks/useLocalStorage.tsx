@@ -34,6 +34,6 @@ export default function useLocalStorage(key: string) {
   React.useEffect(() => {
     const value = JSON.parse(window.localStorage.getItem(key) as string);
     setLocalState(value);
-  }, []);
+  }, [key]);
   return [localState, setLocalValue, deleteLocalValue, setLocalState];
 }

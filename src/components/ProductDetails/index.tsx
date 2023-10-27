@@ -22,7 +22,7 @@ export default function Index() {
     setProduct(product);
     setError(error);
     setLoading(loading);
-  }, [product, error, loading]);
+  }, [product, error, loading, setProduct, setError, setLoading]);
 
   if (error) {
     return <h2>{error}</h2>;

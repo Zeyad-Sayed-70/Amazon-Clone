@@ -29,7 +29,7 @@ export default function useFetchProductById({ id }: { id: number }) {
 
   useEffect(() => {
     fetchProductById(id);
-  }, []);
+  }, [id]);
 
   return { product, loading, error };
 }
