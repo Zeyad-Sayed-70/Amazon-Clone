@@ -24,12 +24,12 @@ export default function CBoxSingle({ category }: { category: string }) {
   return (
     <section className="p-4 bg-primary_white">
       <Link
-        href={"#"}
+        href={`/category/${category}`}
         className="capitalize text-xlarge font-bold text-secondary_medium mb-3 block"
       >
         {category.split("-").join(" ")}
       </Link>
-      <Link href={"#"}>
+      <Link href={`/category/${category}`}>
         <Image
           className="mb-3 w-[320px] h-[320px] object-contain"
           width={300}
@@ -41,7 +41,7 @@ export default function CBoxSingle({ category }: { category: string }) {
         />
       </Link>
       <Link
-        href={"#"}
+        href={`/category/${category}`}
         className="text-small font-bold text-secondary_blue hover:text-secondary_orange"
       >
         See More

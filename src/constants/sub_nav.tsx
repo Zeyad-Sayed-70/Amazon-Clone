@@ -38,12 +38,12 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "smartphones",
-            link: "/",
+            link: "/category/smartphones",
           },
           {
             id: 2,
             title: "laptops",
-            link: "/",
+            link: "/category/laptops",
           },
         ],
       },
@@ -54,12 +54,12 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "automotive",
-            link: "/",
+            link: "/category/automotive",
           },
           {
             id: 2,
             title: "motorcycle",
-            link: "/",
+            link: "/category/motorcycle",
           },
         ],
       },
@@ -76,12 +76,12 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "home decoration",
-            link: "/",
+            link: "/category/home-decoration",
           },
           {
             id: 2,
             title: "furniture",
-            link: "/",
+            link: "/category/furniture",
           },
         ],
       },
@@ -92,7 +92,7 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "lighting",
-            link: "/",
+            link: "/category/lighting",
           },
         ],
       },
@@ -109,12 +109,12 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "mens shirts",
-            link: "/",
+            link: "/category/mens-shirts",
           },
           {
             id: 2,
             title: "mens shoes",
-            link: "/",
+            link: "/category/mens-shoes",
           },
         ],
       },
@@ -125,12 +125,12 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "womens dresses",
-            link: "/",
+            link: "/category/womens-dresses",
           },
           {
             id: 2,
             title: "womens shoes",
-            link: "/",
+            link: "/category/womens-shoes",
           },
         ],
       },
@@ -141,32 +141,27 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "mens watches",
-            link: "/",
+            link: "/category/mens-watches",
           },
           {
             id: 2,
             title: "womens watches",
-            link: "/",
-          },
-          {
-            id: 3,
-            title: "mens watches",
-            link: "/",
+            link: "/category/womens-watches",
           },
           {
             id: 4,
             title: "sunglasses",
-            link: "/",
+            link: "/category/sunglasses",
           },
           {
             id: 5,
             title: "womens bags",
-            link: "/",
+            link: "/category/womens-bags",
           },
           {
             id: 6,
             title: "womens jewellery",
-            link: "/",
+            link: "/category/womens-jewellery",
           },
         ],
       },
@@ -183,12 +178,12 @@ export const drawer_list_data = [
           {
             id: 1,
             title: "skincare",
-            link: "/",
+            link: "/category/skincare",
           },
           {
             id: 2,
             title: "fragrances",
-            link: "/",
+            link: "/category/fragrances",
           },
         ],
       },
@@ -204,13 +199,13 @@ export const drawer_list_data = [
         list: [
           {
             id: 1,
-            title: "groceriese",
-            link: "/",
+            title: "groceries",
+            link: "/category/groceries",
           },
           {
             id: 2,
             title: "tops",
-            link: "/",
+            link: "/category/tops",
           },
         ],
       },

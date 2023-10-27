@@ -15,8 +15,11 @@ export default function Footer() {
             Get to Know Us
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list) => (
-              <li className="text-medium text-grey_dark hover:underline font-bold w-fit">
+            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+              <li
+                key={ind}
+                className="text-medium text-grey_dark hover:underline font-bold w-fit"
+              >
                 <Link href={"#"}>Link {list}</Link>
               </li>
             ))}
@@ -27,8 +30,11 @@ export default function Footer() {
             Get to Know Us
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list) => (
-              <li className="text-medium text-grey_dark hover:underline font-bold w-fit">
+            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+              <li
+                key={ind}
+                className="text-medium text-grey_dark hover:underline font-bold w-fit"
+              >
                 <Link href={"#"}>Link {list}</Link>
               </li>
             ))}
@@ -39,8 +45,11 @@ export default function Footer() {
             Get to Know Us
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list) => (
-              <li className="text-medium text-grey_dark hover:underline font-bold w-fit">
+            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+              <li
+                key={ind}
+                className="text-medium text-grey_dark hover:underline font-bold w-fit"
+              >
                 <Link href={"#"}>Link {list}</Link>
               </li>
             ))}
@@ -51,8 +60,11 @@ export default function Footer() {
             Get to Know Us
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list) => (
-              <li className="text-medium text-grey_dark hover:underline font-bold w-fit">
+            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+              <li
+                key={ind}
+                className="text-medium text-grey_dark hover:underline font-bold w-fit"
+              >
                 <Link href={"#"}>Link {list}</Link>
               </li>
             ))}

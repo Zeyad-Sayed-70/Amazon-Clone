@@ -7,7 +7,13 @@ import React from "react";
 import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 
-export default function MultiCarousel({ skip = 0 }: { skip?: number }) {
+export default function MultiCarousel({
+  skip = 0,
+  title = "Exciting Deals",
+}: {
+  skip?: number;
+  title?: string;
+}) {
   const { products } = useProducts({ limit: 30, skip });
   const width = useWindowWidth();
   const scrollBoxRef = React.useRef<HTMLDivElement>(null);
@@ -24,7 +30,7 @@ export default function MultiCarousel({ skip = 0 }: { skip?: number }) {
       <article className="relative p-4 pb-2">
         <header className="flex gap-4 items-center">
           <h1 className="capitalize text-large font-extrabold text-secondary_medium">
-            Exciting deals
+            {title}
           </h1>
           <Link
             href={"#"}
@@ -54,7 +60,7 @@ export default function MultiCarousel({ skip = 0 }: { skip?: number }) {
             .sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
             .map((product) => (
               <div key={product.id} className="p-4 w-[320px] ">
-                <Link href={"#"}>
+                <Link href={`/product/${product.id}`}>
                   <Image
                     title={product.title}
                     width={300}

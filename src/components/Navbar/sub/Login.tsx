@@ -8,7 +8,7 @@ export default function Login({ fromMenu = false }: { fromMenu?: boolean }) {
         fromMenu ? "!flex justify-center lg:!hidden" : "!hidden lg:!flex"
       }`}
     >
-      <Link href={"/login"}>
+      <Link href={"/signin"}>
         <span className="text-small" color="grey_original">
           Hello, Sign in
         </span>

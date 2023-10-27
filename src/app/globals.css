@@ -28,3 +28,8 @@ body {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #f19d38;
 }
+
+/* hide scrollbar */
+.scrollbar-hidden::-webkit-scrollbar {
+  height: 0px;
+}

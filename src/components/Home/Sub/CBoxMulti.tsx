@@ -30,12 +30,19 @@ export default function CBoxMulti({
 
   return (
     <section className="p-4 max-w-[352px] bg-primary_white">
-      <h2 className="capitalize text-xlarge font-bold text-secondary_medium mb-3">
+      <Link
+        href={`/category/${category}`}
+        className="capitalize text-xlarge font-bold text-secondary_medium mb-3 block"
+      >
         {category.split("-").join(" ")}
-      </h2>
+      </Link>
       <div className="flex flex-wrap gap-2 gap-y-4 h-[320px] mb-3">
         {products.map((product) => (
-          <Link key={product.id} href={"#"} className="flex items-center">
+          <Link
+            key={product.id}
+            href={`/product/${product.id}`}
+            className="flex items-center"
+          >
             <Image
               quality={100}
               className="w-[150px] object-contain"
@@ -48,7 +55,7 @@ export default function CBoxMulti({
         ))}
       </div>
       <Link
-        href={"#"}
+        href={`/category/${category}`}
         className="text-small font-bold text-secondary_blue hover:text-secondary_orange"
       >
         See More

@@ -5,8 +5,8 @@ export default function useProducts({
   limit = 30,
   skip = 0,
 }: {
-  limit: number;
-  skip: number;
+  limit?: number;
+  skip?: number;
 }) {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {

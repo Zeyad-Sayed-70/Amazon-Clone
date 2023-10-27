@@ -64,8 +64,7 @@ export default function DrawerComp({
                     setSelectedList(cate);
                   }}
                 >
-                  {cate.title}{" "}
-                  <IoIosArrowForward className="hover:bg-grey_disabled" />
+                  {cate.title} <IoIosArrowForward />
                 </li>
               ))}
             </ul>

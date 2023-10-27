@@ -13,9 +13,9 @@ export default function useCategories({
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     fetch(
-      `https://dummyjson.com/products/category/${category}?limit=${limit}&select=${select?.join(
-        ","
-      )}`
+      `https://dummyjson.com/products/category/${category}${
+        limit ? `?limit=${limit}` : ""
+      }${select ? `&select=${select?.join(",")}` : ""}`
     )
       .then((res) => res.json())
       .then((json) => setProducts(json.products));

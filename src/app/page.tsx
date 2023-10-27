@@ -1,9 +1,7 @@
 "use client";
 import Categories from "@/components/Home";
 import DemoCarousel from "@/components/Home/Sub/Carousel";
-import Footer from "@/components/Home/Sub/Footer";
 import MultiCarousel from "@/components/Home/Sub/MultiCarousel";
-import SigninReminder from "@/components/Home/Sub/SigninReminder";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -31,7 +29,7 @@ export default function Home() {
         </section>
         <section>
           <Suspense fallback={<h1>Loading...</h1>}>
-            <MultiCarousel />
+            <MultiCarousel title="Best Sellers" />
             <MultiCarousel skip={30} />
             <Categories
               categories={[
@@ -45,13 +43,7 @@ export default function Home() {
                 "womens-shoes",
               ]}
             />
-            <MultiCarousel skip={60} />
-          </Suspense>
-        </section>
-        <section>
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <SigninReminder />
-            <Footer />
+            <MultiCarousel skip={60} title="Explore More" />
           </Suspense>
         </section>
       </article>

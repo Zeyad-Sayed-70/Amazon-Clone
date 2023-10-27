@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const CarouselComp: any = dynamic(() =>
@@ -20,46 +21,46 @@ export default function DemoCarousel() {
         interval={5000}
         className="carousel"
       >
-        <div>
+        <Link href={`/category/skincare`}>
           <Image
             width={1000}
             height={600}
             src="/assets/carousel/carousel1.jpg"
             alt="photo"
           />
-        </div>
-        <div>
+        </Link>
+        <Link href={`/category/home-decoration`}>
           <Image
             width={1000}
             height={600}
             src="/assets/carousel/carousel2.jpg"
             alt="photo"
           />
-        </div>
-        <div>
+        </Link>
+        <Link href={`/category/furniture`}>
           <Image
             width={1000}
             height={600}
             src="/assets/carousel/carousel3.jpg"
             alt="photo"
           />
-        </div>
-        <div>
+        </Link>
+        <Link href={`/category/automotive`}>
           <Image
             width={1000}
             height={600}
             src="/assets/carousel/carousel4.jpg"
             alt="photo"
           />
-        </div>
-        <div>
+        </Link>
+        <Link href={`/category/groceries`}>
           <Image
             width={1000}
             height={600}
             src="/assets/carousel/carousel5.jpg"
             alt="photo"
           />
-        </div>
+        </Link>
       </CarouselComp>
     </section>
   );
