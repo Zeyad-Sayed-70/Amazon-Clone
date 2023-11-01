@@ -1,7 +1,16 @@
 import Rating from "@/components/Rating";
+import { LocalStateContext } from "@/context/localStorage";
 import Image from "next/image";
+import { useContext } from "react";
 
 export default function ProductSuggestion({ product }: { product: Product }) {
+  const { localState, deleteLocalValue, setLocalValue } =
+    useContext(LocalStateContext);
+
+  let isInCart: Boolean = localState?.some(
+    (item: any) => item.product.id === product?.id
+  );
+
   if (product)
     return (
       <div className="flex items-center gap-1 mb-4">
@@ -21,8 +30,15 @@ export default function ProductSuggestion({ product }: { product: Product }) {
             </span>
           </div>
           <h4 className="text-secondary_red mb-2">${product.price}</h4>
-          <button className="bg-yellow-300 hover:bg-yellow-400 p-1 px-2 rounded-full text-small w-fit">
-            Add to Cart
+          <button
+            onClick={() =>
+              isInCart
+                ? deleteLocalValue(product?.id as number)
+                : setLocalValue(product as Product, 1)
+            }
+            className="bg-yellow-300 hover:bg-yellow-400 p-1 px-2 rounded-full text-small w-fit"
+          >
+            {isInCart ? "Remove from the Cart" : "Add to Cart"}
           </button>
         </div>
       </div>

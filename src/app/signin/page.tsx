@@ -1,4 +1,6 @@
 "use client";
+import ErrorBox from "@/components/ErrorBox";
+import useLogin from "@/hooks/useLogin";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -66,7 +68,9 @@ type FormData = {
 
 function Form() {
   const [step, setStep] = useState(1);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData | null>(null);
+  const { loginUser, error } = useLogin();
 
   const {
     register,
@@ -74,7 +78,28 @@ function Form() {
     formState: { errors },
   } = useForm<LoginFormInput>();
 
-  const onSubmit: SubmitHandler<LoginFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
+    try {
+      loginUser({
+        email: data.email,
+        password: data.password,
+      })
+        .then((data) => {
+          setErrorMsg(null);
+
+          console.log("data");
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log("err");
+          console.log(err);
+          setErrorMsg(err.response.data.message);
+        });
+    } catch (error: any) {
+      console.log("error");
+      setErrorMsg(error.message);
+    }
+  };
 
   function handleClick() {
     const emailRegax =
@@ -87,6 +112,7 @@ function Form() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-3 w-[300px]">
+      <ErrorBox errorMsg={errorMsg} />
       <div className={`${step === 1 ? "block" : "hidden"}`}>
         <label htmlFor="em" className="mr-auto text-medium font-bold">
           Email

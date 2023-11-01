@@ -8,7 +8,7 @@ import { LiaArrowLeftSolid } from "react-icons/lia";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 
-import { drawer_list_data } from "@/constants/sub_nav";
+import { drawer_list_data } from "@/constants/subNav";
 
 export default function DrawerComp({
   isOpen,

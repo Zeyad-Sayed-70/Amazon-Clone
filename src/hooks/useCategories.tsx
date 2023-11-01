@@ -1,5 +1,7 @@
 "use client";
+import BACKEND_URL from "@/constants/backend";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function useCategories({
   category,
@@ -12,14 +14,17 @@ export default function useCategories({
 }) {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
-    fetch(
-      `https://dummyjson.com/products/category/${category}${
-        limit ? `?limit=${limit}` : ""
-      }${select ? `&select=${select?.join(",")}` : ""}`
-    )
-      .then((res) => res.json())
-      .then((json) => setProducts(json.products));
-  }, [setProducts, category, limit, select]);
+    async function getData() {
+      const res = await axios.get(
+        `${BACKEND_URL}/products/category/${category}${
+          limit ? `?limit=${limit}` : ""
+        }${select ? `&select=${select?.join(",")}` : ""}`
+      );
+
+      setProducts(res.data.products);
+    }
+    getData();
+  }, [setProducts, limit, category]);
 
   return { products, setProducts, limit, select };
 }

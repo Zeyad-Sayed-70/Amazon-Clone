@@ -11,16 +11,16 @@ export default function ProductCart({
   product: Product;
   quantity: number;
 }) {
-  const { setLocalState } = React.useContext(LocalStateContext);
+  const { setLocalState, localState } = React.useContext(LocalStateContext);
   // Create a state for the quantity and set it to the passed in quantity.
   const [quantity, setQuantity] = React.useState(q);
+
+  // Get the key for the local storage.
+  const key = "cart_data";
 
   // This function sets the quantity and saves it to local storage.
   function setQuantityAndSave(quan: number) {
     setQuantity(quan);
-
-    // Get the key for the local storage.
-    const key = "cart_data";
 
     // Get the old values from local storage.
     const oldValues =
@@ -40,6 +40,15 @@ export default function ProductCart({
     setLocalState(newValues);
   }
 
+  function deleteItem(product: Product) {
+    const newValue = localState.filter(
+      (item) => item.product.id !== product.id
+    );
+    setLocalState(newValue);
+    // Save the new values to local storage.
+    window.localStorage.setItem(key, JSON.stringify(newValue));
+  }
+
   return (
     <div className="flex flex-col md:flex-row items-center gap-3">
       <Link href={`/product/${product.id}`}>
@@ -48,7 +57,7 @@ export default function ProductCart({
           src={product.thumbnail || "/download.jpg"}
           width={100}
           height={100}
-          className="w-[150px] object-contain h-[200px] bg-primary_white"
+          className="min-w-[300px] md:min-w-[150px] object-contain h-[200px] bg-primary_white"
         />
       </Link>
       <div className="flex flex-col gap-1 py-4">
@@ -80,7 +89,10 @@ export default function ProductCart({
             setQuantity={setQuantityAndSave}
           />
 
-          <span className="text-secondary_blue cursor-pointer hover:underline text-small">
+          <span
+            onClick={() => deleteItem(product)}
+            className="text-secondary_blue cursor-pointer hover:underline text-small"
+          >
             Delete
           </span>
           <span className="text-gray-300">|</span>

@@ -1,5 +1,7 @@
 "use client";
+import BACKEND_URL from "@/constants/backend";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function useProducts({
   limit = 30,
@@ -10,9 +12,14 @@ export default function useProducts({
 }) {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
-    fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
-      .then((res) => res.json())
-      .then((json) => setProducts(json.products));
+    async function getData() {
+      const data = await axios.get(
+        `${BACKEND_URL}/products?limit=${limit}&skip=${skip}`
+      );
+      setProducts(data.data.products);
+    }
+
+    getData();
   }, [limit, skip]);
 
   return { products, setProducts };

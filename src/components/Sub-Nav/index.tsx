@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState, lazy, Suspense } from "react";
 import { BiMenu } from "react-icons/bi";
-import { list_data } from "@/constants/sub_nav";
+import { list_data } from "@/constants/subNav";
 
 const DrawerComp = lazy(() => import("./Sub/Drawer"));
 

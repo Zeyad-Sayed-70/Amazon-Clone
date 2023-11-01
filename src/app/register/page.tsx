@@ -1,4 +1,6 @@
 "use client";
+import ErrorBox from "@/components/ErrorBox";
+import useRegister from "@/hooks/useRegister";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -52,20 +54,44 @@ interface RegisterFormInput {
 
 function Form() {
   const [pass, setPass] = useState("");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const { registerUser, error } = useRegister();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormInput>();
 
-  const onSubmit: SubmitHandler<RegisterFormInput> = (data) =>
-    console.log(data);
+  const onSubmit: SubmitHandler<RegisterFormInput> = async (data) => {
+    try {
+      registerUser({
+        username: data.name,
+        email: data.email,
+        password: data.password,
+      })
+        .then((data) => {
+          setErrorMsg(null);
+
+          console.log("data");
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log("err");
+          console.log(err);
+          setErrorMsg(err.response.data.message);
+        });
+    } catch (error: any) {
+      console.log("error");
+      setErrorMsg(error.message);
+    }
+  };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="mt-3 w-[300px] flex flex-col gap-3"
     >
+      <ErrorBox errorMsg={errorMsg} />
       <div>
         <label htmlFor="nm" className="mr-auto text-medium font-bold">
           Name

@@ -1,12 +1,25 @@
 import { useId } from "react";
 import { categories } from "@/constants/categories";
-import { search_history } from "@/constants/search-history";
 import SelectComp from "@/components/Select";
-import Select from "react-select";
+import Select from "react-select/async";
 import { BsSearch } from "react-icons/bs";
+import axios from "axios";
 
 export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
   const randId = useId();
+
+  const getProducts = (input: string) => {
+    return axios
+      .get(`https://dummyjson.com/products/search?q=${input}`)
+      .then((res) => {
+        // Transform the data into the format expected by react-select
+        return res.data.products.map((product: Product) => ({
+          label: product.title,
+          value: product.id,
+        }));
+      });
+  };
+
   return (
     <section
       className={`flex-1 items-center px-2 ${
@@ -20,38 +33,14 @@ export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
           ...(categories as any),
         ]}
       />
-      {/* <input
-        type="text"
-        name="search"
-        placeholder="Search Amazon"
-        className="flex-1 h-[40px] px-2 py-1 text-black bg-white border border-gray-300 focus:outline-none focus"
-      /> */}
-      {/* <Select
-        instanceId={randId}
-        className="text-black w-[130px]"
-        isSearchable={false}
-        placeholder="All Departments"
-        value={"All Departments"}
-        onChange={() => {}}
-        options={[
-          { value: "all", label: "All Departments" },
-          ...(categories as any),
-        ]}
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            borderRadius: "4px 0 0 4px",
-            textWrap: "nowrap",
-          }),
-        }}
-      /> */}
       <Select
         instanceId={randId}
-        className="flex-1 min-w-[150px] text-black"
+        className="flex-1 min-w-[150px] text-black z-[1000]"
         placeholder="Search Amazon"
-        value={""}
-        onChange={() => {}}
-        options={search_history as any}
+        onChange={(e: any) => {
+          location.href = `/product/${e.value}`;
+        }}
+        loadOptions={getProducts}
         styles={{
           control: (provided) => ({
             ...provided,

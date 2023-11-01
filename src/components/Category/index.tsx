@@ -1,15 +1,11 @@
 import { useState, useEffect, useContext, Suspense, lazy } from "react";
-// import SideBarDrawer from "./Sub/SideBarDrawer";
 import CategoryDisplay from "./Sub/CategoryDisplay";
 import SideBar from "./Sub/SideBar";
-
 import { TbFilterCog } from "react-icons/tb";
 import { useParams } from "next/navigation";
 import useCategories from "@/hooks/useCategories";
 import { ProductsContext } from "@/context/products";
 
-// const SideBar = lazy(() => import("./Sub/SideBar"));
-// const CategoryDisplay = lazy(() => import("./Sub/CategoryDisplay"));
 const SideBarDrawer = lazy(() => import("./Sub/SideBarDrawer"));
 
 export default function Index() {

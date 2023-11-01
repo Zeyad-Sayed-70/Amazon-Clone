@@ -6,7 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 export default function PageChains() {
   const { product } = useContext(ProductDetailsContext);
   return (
-    <section className="flex items-center gap-1">
+    <section className="flex items-center gap-1 text-center">
       <Link
         href={"#"}
         className="text-small text-grey_disabled capitalize hover:underline"

@@ -1,6 +1,7 @@
 const UserAccount = require("../Models/userAccount");
-const { request, response } = require("express");
-const hash = require("bcrypt");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const saltRounds = 10;
 
 const CreateUserAccount = async (req, res) => {
   try {
@@ -15,7 +16,7 @@ const CreateUserAccount = async (req, res) => {
       res.status(400).json({ message: "Password is not Found!" });
 
     // Hash Password
-    const hashedPass = hash.salt(password);
+    const hashedPass = await bcrypt.hash(password, saltRounds);
 
     // Create new user account
     await UserAccount.create({
@@ -24,9 +25,18 @@ const CreateUserAccount = async (req, res) => {
       password: hashedPass,
     });
 
+    // Make the token
+    const token = await jwt.sign({ email }, process.env.JWT_SECRET);
+
     // response successful message
-    res.status(200).json({ message: "You've been Created New Account." });
+    res
+      .status(200)
+      .json({ message: "You've been Created New Account.", token });
   } catch (error) {
+    console.log(error);
+    if (error.code === 11000)
+      return res.status(400).json({ message: "This Email is already exist!" });
+
     res.status(400).json({ message: error.message });
   }
 };

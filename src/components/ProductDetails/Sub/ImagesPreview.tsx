@@ -9,7 +9,7 @@ export default function ImagesPreview() {
       <hr className="py-[1px] my-2 bg-grey_original" />
       <div>
         <h2 className="font-extrabold text-xxlarge">From the brand</h2>
-        {product?.images.map((img, ind) => (
+        {product?.images?.map((img, ind) => (
           <Image
             key={ind}
             width={400}

@@ -55,7 +55,7 @@ export default function SideBar() {
   }, [filterData, productsInstance, setProducts]);
 
   return (
-    <article className="flex flex-col gap-6 min-w-[200px] bg-primary_white p-6 text-primary_black lg:border-r-4 lg:my-4 overflow-auto h-full">
+    <article className="flex flex-col gap-6 min-w-[200px] bg-primary_white p-6 text-primary_black lg:border-r-4 overflow-auto h-full">
       {/* Display all Departments */}
       <section>
         <h1 className="text-medium font-bold mb-2">Department</h1>

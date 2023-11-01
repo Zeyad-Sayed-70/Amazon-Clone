@@ -8,7 +8,7 @@ const MultiCarousel = dynamic(
   () => import("@/components/Home/Sub/MultiCarousel"),
   { ssr: false }
 );
-// const MultiCarousel = lazy(() => import("@/components/Home/Sub/MultiCarousel"));
+
 const TopSellersProducts = lazy(() => import("./Sub/TopSellersProducts"));
 
 export default function Index() {
@@ -45,13 +45,19 @@ export default function Index() {
           <hr className="h-[1px] bg-grey_original" />
           {/* Cart Products */}
           <div className="flex flex-col gap-3">
-            {localState?.map((item: any) => (
-              <ProductCart
-                key={item.product.id}
-                product={item.product}
-                quantity={item.quantity}
-              />
-            ))}
+            {localState && localState.length > 0 ? (
+              localState?.map((item: any) => (
+                <ProductCart
+                  key={item.product.id}
+                  product={item.product}
+                  quantity={item.quantity}
+                />
+              ))
+            ) : (
+              <h2 className="font-bold text-large my-4 mx-auto">
+                Your Cart is Empty
+              </h2>
+            )}
           </div>
           <hr className="h-[1px] bg-grey_original my-2" />
           {/* Subtotal */}

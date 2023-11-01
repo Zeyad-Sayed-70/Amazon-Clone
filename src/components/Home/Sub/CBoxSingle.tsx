@@ -14,7 +14,7 @@ export default function CBoxSingle({ category }: { category: string }) {
     return (
       <>
         <section className="p-4 bg-primary_white">
-          <div className="w-[320px] h-[320px] flex justify-center items-center">
+          <div className="w-[350px] h-[300px] flex justify-center items-center">
             Loading...
           </div>
         </section>
@@ -22,7 +22,7 @@ export default function CBoxSingle({ category }: { category: string }) {
     );
 
   return (
-    <section className="p-4 bg-primary_white">
+    <section className="p-4 bg-primary_white flex flex-col justify-between">
       <Link
         href={`/category/${category}`}
         className="capitalize text-xlarge font-bold text-secondary_medium mb-3 block"
@@ -31,7 +31,7 @@ export default function CBoxSingle({ category }: { category: string }) {
       </Link>
       <Link href={`/category/${category}`}>
         <Image
-          className="mb-3 w-[320px] h-[320px] object-contain"
+          className="mb-3 w-full h-[300px] object-contain"
           width={300}
           height={400}
           src={

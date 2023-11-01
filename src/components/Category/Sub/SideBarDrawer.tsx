@@ -1,7 +1,7 @@
-import React, { useId, useState } from "react";
+import React, { useId } from "react";
 import Drawer from "react-modern-drawer";
 import SideBar from "./SideBar";
-
+import "react-modern-drawer/dist/index.css";
 export default function SideBarDrawer({
   products,
   isOpen,

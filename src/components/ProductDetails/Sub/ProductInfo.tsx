@@ -1,4 +1,4 @@
-import { table_data } from "@/constants/table_data";
+import { table_data } from "@/constants/tableData";
 import { ProductDetailsContext } from "@/context/productDetail";
 import React, { useContext } from "react";
 

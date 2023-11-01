@@ -1,5 +1,6 @@
+import BACKEND_URL from "@/constants/backend";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 export default function useFetchProductById({ id }: { id: number }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -11,13 +12,13 @@ export default function useFetchProductById({ id }: { id: number }) {
     setProduct(null);
 
     try {
-      const response = await fetch(`https://dummyjson.com/products/${id}`);
+      const response = await axios.get(`${BACKEND_URL}/products/${id}`);
 
-      const data = await response.json();
+      const data = response.data.product;
 
       setLoading(false);
 
-      if (response.ok) {
+      if (response.status) {
         setProduct(data);
       } else {
         setError(data.message);

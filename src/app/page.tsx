@@ -2,8 +2,9 @@
 import Categories from "@/components/Home";
 import DemoCarousel from "@/components/Home/Sub/Carousel";
 // import MultiCarousel from "@/components/Home/Sub/MultiCarousel";
-import { Suspense } from "react";
+import { Suspense, useContext } from "react";
 import dynamic from "next/dynamic";
+import { SafeGateContext } from "@/context/safeGate";
 
 const MultiCarousel = dynamic(
   () => import("@/components/Home/Sub/MultiCarousel"),
@@ -11,6 +12,8 @@ const MultiCarousel = dynamic(
 );
 
 export default function Home() {
+  const { isLoggined } = useContext(SafeGateContext);
+
   return (
     <>
       <article>

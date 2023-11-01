@@ -1,5 +1,6 @@
-// const UserAccount = require("../Models/userAccount");
+const UserAccount = require("../Models/userAccount");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const Login = async (req, res) => {
   try {
@@ -16,16 +17,26 @@ const Login = async (req, res) => {
 
     // Check if User Founded
     if (UserData === null)
-      return res.status(400).json({ message: "Sorry, This user not found." });
+      return res.status(400).json({ message: "This user not found." });
 
     // Check Password Validation
-    const isCorrect = bcrypt.compare(password, UserData.password);
+    const isCorrect = bcrypt.compareSync(password, UserData.password);
 
     if (!isCorrect)
-      return res.status(400).json({ message: "The Password isn't Correct." });
+      return res.status(400).json({ message: "The password isn't correct." });
+
+    const responseData = {
+      username: UserData.username,
+      email: UserData.email,
+    };
+
+    // Make the token
+    const token = await jwt.sign({ email }, process.env.JWT_SECRET);
 
     // response successful message
-    res.status(200).json({ message: "You've been Loggined." });
+    res
+      .status(200)
+      .json({ message: "You've been Loggined.", data: responseData, token });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

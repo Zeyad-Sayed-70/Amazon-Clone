@@ -1,4 +1,4 @@
-import { quantityLimit } from "@/constants/QuantityLimit";
+import { quantityLimit } from "@/constants/quantityLimit";
 import React from "react";
 
 export default function QuantitySelector({

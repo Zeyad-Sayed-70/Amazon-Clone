@@ -29,23 +29,23 @@ export default function CBoxMulti({
     );
 
   return (
-    <section className="p-4 max-w-[352px] bg-primary_white">
+    <section className="p-4 bg-primary_white flex flex-col justify-between">
       <Link
         href={`/category/${category}`}
         className="capitalize text-xlarge font-bold text-secondary_medium mb-3 block"
       >
         {category.split("-").join(" ")}
       </Link>
-      <div className="flex flex-wrap gap-2 gap-y-4 h-[320px] mb-3">
-        {products.map((product) => (
+      <div className="flex flex-wrap gap-2 gap-y-4 mb-3">
+        {products.slice(0, 4).map((product) => (
           <Link
             key={product.id}
             href={`/product/${product.id}`}
-            className="flex items-center"
+            className="flex items-center w-[48%]"
           >
             <Image
               quality={100}
-              className="w-[150px] object-contain"
+              className="w-full object-contain"
               width={200}
               height={200}
               src={product.thumbnail ? product.thumbnail : "/small-logo.jpg"}

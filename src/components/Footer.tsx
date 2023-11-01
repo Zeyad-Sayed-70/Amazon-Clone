@@ -1,5 +1,12 @@
 import LangSelect from "@/components/Navbar/sub/LangSelect";
 import Logo from "@/components/Navbar/sub/Logo";
+import {
+  amazon_hubs,
+  amazon_payment_products,
+  get_to_know_us,
+  let_us_help_you,
+  make_money_with_us,
+} from "@/constants/footer";
 import Link from "next/link";
 import React from "react";
 
@@ -9,63 +16,63 @@ export default function Footer() {
       <section className="w-full py-4 text-center bg-slate-600 hover:bg-slate-500 text-primary_white text-small font-bold cursor-pointer">
         Back to top
       </section>
-      <section className="py-24 px-2 flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24">
+      <section className="py-24 px-2 flex flex-col md:flex-row justify-center gap-12 lg:gap-24">
         <div>
           <h1 className="text-large text-primary_white font-bold">
             Get to Know Us
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+            {get_to_know_us.map((list, ind) => (
               <li
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={"#"}>Link {list}</Link>
+                <Link href={list.to}>Link {list.title}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div>
           <h1 className="text-large text-primary_white font-bold">
-            Get to Know Us
+            Make Money with Us
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+            {make_money_with_us.map((list, ind) => (
               <li
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={"#"}>Link {list}</Link>
+                <Link href={list.to}>Link {list.title}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div>
           <h1 className="text-large text-primary_white font-bold">
-            Get to Know Us
+            Amazon Payment Products
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+            {amazon_payment_products.map((list, ind) => (
               <li
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={"#"}>Link {list}</Link>
+                <Link href={list.to}>Link {list.title}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div>
           <h1 className="text-large text-primary_white font-bold">
-            Get to Know Us
+            Let Us Help You
           </h1>
           <ul className="flex flex-col gap-3 mt-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((list, ind) => (
+            {let_us_help_you.map((list, ind) => (
               <li
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={"#"}>Link {list}</Link>
+                <Link href={list.to}>Link {list.title}</Link>
               </li>
             ))}
           </ul>
@@ -78,34 +85,12 @@ export default function Footer() {
         </div>
       </section>
       <section className="pt-12 pb-6 bg-secondary_darkBlack">
-        <div className="flex justify-center md:justify-start flex-wrap gap-8 mx-auto px-12 max-w-[800px]">
-          {[
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            ,
-            11,
-            22,
-            33,
-            44,
-            55,
-            66,
-            77,
-            88,
-            99,
-          ].map((e) => (
-            <Link key={e} href={"#"} className="text-small">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-center md:text-start gap-8 mx-auto px-12 max-w-[800px]">
+          {amazon_hubs.map((e, ind) => (
+            <Link key={ind} href={"#"} className="text-small">
               <h6 className="flex flex-col text-primary_white hover:underline">
-                Amazon Music {e}
-                <span className="text-grey_disabled">
-                  Stream millions of songs
-                </span>
+                {e.title}
+                <span className="text-grey_disabled">{e.description}</span>
               </h6>
             </Link>
           ))}
