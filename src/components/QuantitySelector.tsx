@@ -1,3 +1,4 @@
+"use client";
 import { quantityLimit } from "../constants/quantityLimit";
 import React from "react";
 
