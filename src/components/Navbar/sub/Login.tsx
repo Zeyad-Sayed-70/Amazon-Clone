@@ -17,7 +17,7 @@ export default function Login({ fromMenu = false }: { fromMenu?: boolean }) {
             Hello, {userData.username}
           </span>
           <h2
-            className="text-small cursor-pointer text-grey_dark "
+            className="text-small cursor-pointer text-grey_dark w-fit hover:text-grey_original"
             onClick={() => {
               localStorage.removeItem("token");
               location.reload();

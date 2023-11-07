@@ -1,7 +1,7 @@
 import { ProductDetailsContext } from "@/context/productDetail";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Suspense } from "react";
 
 export default function ProductImages() {
   const width = useWindowWidth();
@@ -63,21 +63,23 @@ export default function ProductImages() {
         alt={product?.title || "Product Image"}
       />
 
-      <div
-        className={`absolute top-0 left-full ml-1 w-[750px] h-[600px] bg-primary_white overflow-hidden z-[100] hidden ${
-          isImageHoverd ? "xl:block" : ""
-        }`}
-      >
-        <Image
-          style={{ transformOrigin: `${imageAxis?.x}px ${imageAxis?.y}px` }}
-          className={`w-full h-[100%] object-contain scale-150`}
-          width={900}
-          height={900}
-          quality={100}
-          src={selectedImage || "/download.jpg"}
-          alt={product?.title || "Product Image"}
-        />
-      </div>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <div
+          className={`absolute top-0 left-full ml-1 w-[750px] h-[600px] bg-primary_white overflow-hidden z-[100] ${
+            isImageHoverd ? "block" : "hidden"
+          }`}
+        >
+          <Image
+            style={{ transformOrigin: `${imageAxis?.x}px ${imageAxis?.y}px` }}
+            className={`w-full h-[100%] object-contain scale-150`}
+            width={900}
+            height={900}
+            quality={100}
+            src={selectedImage || "/download.jpg"}
+            alt={product?.title || "Product Image"}
+          />
+        </div>
+      </Suspense>
     </div>
   );
 }

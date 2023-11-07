@@ -30,7 +30,7 @@ export default function Index() {
 
   return (
     <main className="lg:flex gap-4 p-3 lg:p-0 bg-primary_white">
-      <div className="hidden lg:block">
+      <div className="hidden lg:!block">
         <Suspense fallback={<h2>Loading...</h2>}>
           <SideBar />
         </Suspense>

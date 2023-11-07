@@ -9,6 +9,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+module.exports = { app };
+
+// Stripe
+require("./src/stripe");
+
 // Declare the User Account Router
 app.use("/user", require("./src/Routers/userAccount"));
 app.use("/products", require("./src/Routers/products"));

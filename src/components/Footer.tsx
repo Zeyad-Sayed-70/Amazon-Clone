@@ -13,10 +13,13 @@ import React from "react";
 export default function Footer() {
   return (
     <article className="bg-secondary_medium">
-      <section className="w-full py-4 text-center bg-slate-600 hover:bg-slate-500 text-primary_white text-small font-bold cursor-pointer">
+      <section
+        onClick={() => window.scrollTo({ top: 0 })}
+        className="w-full py-4 text-center bg-slate-600 hover:bg-slate-500 text-primary_white text-small font-bold cursor-pointer"
+      >
         Back to top
       </section>
-      <section className="py-24 px-2 flex flex-col md:flex-row justify-center gap-12 lg:gap-24">
+      <section className="py-24 px-2 flex flex-col md:flex-row justify-center items-center gap-12 lg:gap-24">
         <div>
           <h1 className="text-large text-primary_white font-bold">
             Get to Know Us
@@ -27,7 +30,7 @@ export default function Footer() {
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={list.to}>Link {list.title}</Link>
+                <Link href={list.to}>{list.title}</Link>
               </li>
             ))}
           </ul>
@@ -42,7 +45,7 @@ export default function Footer() {
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={list.to}>Link {list.title}</Link>
+                <Link href={list.to}>{list.title}</Link>
               </li>
             ))}
           </ul>
@@ -57,7 +60,7 @@ export default function Footer() {
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={list.to}>Link {list.title}</Link>
+                <Link href={list.to}>{list.title}</Link>
               </li>
             ))}
           </ul>
@@ -72,7 +75,7 @@ export default function Footer() {
                 key={ind}
                 className="text-medium text-grey_dark hover:underline font-bold w-fit"
               >
-                <Link href={list.to}>Link {list.title}</Link>
+                <Link href={list.to}>{list.title}</Link>
               </li>
             ))}
           </ul>

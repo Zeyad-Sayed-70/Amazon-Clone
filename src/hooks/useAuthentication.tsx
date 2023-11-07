@@ -6,14 +6,9 @@ export default function useAuthentication() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userData, setUserData] = useState<UserData | null>(null);
 
-  // Check Environment
-  if (typeof window === "undefined")
-    return {
-      isAuthenticated,
-      userData,
-    };
-
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const userToken = localStorage.getItem("token");
 
     async function checkAuthentication() {

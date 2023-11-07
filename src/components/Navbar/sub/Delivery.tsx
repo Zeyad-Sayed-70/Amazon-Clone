@@ -1,6 +1,9 @@
+import { getCityAndCountry } from "@/lib/getCityAndCountry";
 import { IoLocationOutline } from "react-icons/io5";
 
 export default function Delivery({ fromMenu = false }: { fromMenu?: boolean }) {
+  const userLocation = getCityAndCountry();
+
   return (
     <section
       className={`
@@ -13,7 +16,7 @@ export default function Delivery({ fromMenu = false }: { fromMenu?: boolean }) {
           Delivery to
         </span>
         <h2 className="text-medium" color={"primary_white"}>
-          Egypt
+          {userLocation}
         </h2>
       </div>
     </section>

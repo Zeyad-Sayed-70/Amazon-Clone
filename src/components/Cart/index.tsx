@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from "react";
 import ProductCart from "@/components/Cart/Sub/ProductCart";
 import { LocalStateContext } from "@/context/localStorage";
 import dynamic from "next/dynamic";
+import { create_checkout_session } from "@/lib/create-checkout-session";
 
 const MultiCarousel = dynamic(
   () => import("@/components/Home/Sub/MultiCarousel"),
@@ -79,7 +80,10 @@ export default function Index() {
                 This order contains a gift
               </label>
             </div>
-            <button className="py-2 w-full text-medium font-bold bg-yellow-400 hover:bg-yellow-500 rounded-lg mt-4">
+            <button
+              onClick={() => create_checkout_session(localState)}
+              className="py-2 w-full text-medium font-bold bg-yellow-400 hover:bg-yellow-500 rounded-lg mt-4"
+            >
               Proceed to checkout
             </button>
           </div>
