@@ -1,6 +1,8 @@
-"use client";
-import { quantityLimit } from "../constants/quantityLimit";
 import React from "react";
+
+let quantityLimit: number[] = [];
+
+for (let i = 1; i <= 60; i++) quantityLimit.push(i);
 
 export default function QuantitySelector({
   quantity,
