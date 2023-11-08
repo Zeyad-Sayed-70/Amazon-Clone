@@ -32,6 +32,7 @@ export default function DrawerComp({
       className="text-black relative overflow-hidden"
     >
       <button
+        onClick={() => (window.location.href = "/signin")}
         className="flex items-center gap-2 py-4 px-8 w-full font-bold text-large text-start bg-secondary_medium text-primary_white"
         type="button"
         title="sign in"

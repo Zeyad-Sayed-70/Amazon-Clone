@@ -47,8 +47,6 @@ const fetchProductsByCategory = async (req, res) => {
   try {
     const { category } = req.params;
 
-    console.log(category);
-
     const products = await Products.find({ category });
 
     res.status(201).json({ msg: "Products fetched successfully", products });

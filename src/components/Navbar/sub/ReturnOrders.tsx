@@ -11,7 +11,7 @@ export default function ReturnOrders({
       items-center gap-2 px-2 py-1 hover:shadow-hover mr-3 
       ${fromMenu ? "!flex justify-center lg:!hidden" : "!hidden lg:!flex"}`}
     >
-      <Link href={"/retrun"}>
+      <Link href={"/return"}>
         <span className="text-small" color="grey_original">
           Return
         </span>

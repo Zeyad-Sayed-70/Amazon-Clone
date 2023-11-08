@@ -23,7 +23,7 @@ app.post("/create-checkout-session", async (req, res) => {
           },
         };
       }),
-      success_url: `${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${process.env.FRONTEND_URL}`,
       cancel_url: `${process.env.FRONTEND_URL}/cart`,
     });
 

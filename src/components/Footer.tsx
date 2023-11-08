@@ -19,7 +19,7 @@ export default function Footer() {
       >
         Back to top
       </section>
-      <section className="py-24 px-2 flex flex-col md:flex-row justify-center items-center gap-12 lg:gap-24">
+      <section className="py-24 px-2 flex flex-col md:flex-row justify-center items-center md:items-start gap-12 lg:gap-24">
         <div>
           <h1 className="text-large text-primary_white font-bold">
             Get to Know Us

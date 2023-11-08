@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import PageChains from "./Sub/PageChains";
+import PageChains from "../PageChains";
 import Details from "./Sub/Details";
 import ProductsCarousel from "./Sub/ProductsCarousel";
 import ImagesPreview from "./Sub/ImagesPreview";
@@ -17,6 +17,17 @@ export default function Index() {
   const { product, error, loading } = useFetchProductById({
     id: parseInt(productId),
   });
+
+  const pages = [
+    {
+      page: product?.category as string,
+      link: `category/${product?.category}`,
+    },
+    {
+      page: product?.title as string,
+      link: `product/${product?.id}`,
+    },
+  ];
 
   useEffect(() => {
     setProduct(product);
@@ -38,7 +49,7 @@ export default function Index() {
           Loading...
         </div>
       )}
-      <PageChains />
+      <PageChains pages={pages} />
       <Details />
       <ProductsCarousel skip={Math.floor(Math.random() * 60)} />
       <ImagesPreview />
