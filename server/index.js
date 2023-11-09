@@ -14,6 +14,15 @@ module.exports = { app };
 // Stripe
 require("./src/stripe");
 
+// Handle Get /
+app.get("/", (req, res) => {
+  try {
+    res.status(200).json({ message: "Welcome to Amazon-Clone Server." });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 // Declare the User Account Router
 app.use("/user", require("./src/Routers/userAccount"));
 app.use("/products", require("./src/Routers/products"));
