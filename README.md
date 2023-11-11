@@ -45,16 +45,17 @@ Steps to install and run the project locally:
 
 Screenshots of the pages and a link to a live demo, also a link to server status page.
 
-![sing in page screenshot](./public/screenshots/signin.webp)
-![register page screenshot](./public/screenshots/register.webp)
-![home page screenshot](./public/screenshots/home.webp)
-![category page screenshot](./public/screenshots/category.webp)
-![product-details page screenshot](./public/screenshots/product_details.webp)
-![cart page screenshot](./public/screenshots/cart.webp)
-![return-orders page screenshot](./public/screenshots/return_orders.webp)
-![payment page screenshot](./public/screenshots/checkout.webp)
+![sing in page screenshot](./public/screenshots/signin.webp "Sign in Page")
+![register page screenshot](./public/screenshots/register.webp "Register Page")
+![home page screenshot](./public/screenshots/home.webp "Home page")
+![category page screenshot](./public/screenshots/category.webp "Category Page")
+![product-details page screenshot](./public/screenshots/product_details.webp "Product Details Page")
+![cart page screenshot](./public/screenshots/cart.webp "Cart Page")
+![return-orders page screenshot](./public/screenshots/return_orders.webp "Return Orders Page")
+![checkout page screenshot](./public/screenshots/checkout.webp "Checkout Page")
 
-Visit _[Live Demo](https://amazon-clone-24.netlify.app/)_
+Visit [Live Demo](https://amazon-clone-24.netlify.app/)
+<br>
 Visit [Status Page](https://stats.uptimerobot.com/MPpo3txRM4)
 
 ## License
