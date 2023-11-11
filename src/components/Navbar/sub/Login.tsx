@@ -1,19 +1,41 @@
+import { useContext } from "react";
 import Link from "next/link";
-import { FlexBox } from "../Styled/Navbar,";
-import { T4 } from "@/components/Globe/Titles";
-import { C3 } from "@/components/Globe/Contents";
+import { SafeGateContext } from "@/context/safeGate";
 
 export default function Login({ fromMenu = false }: { fromMenu?: boolean }) {
+  const { isLoggined, userData } = useContext(SafeGateContext);
   return (
-    <FlexBox
-      className={`mx-3 ${
+    <section
+      className={`
+      items-center gap-2 px-2 py-1 hover:shadow-hover mx-3 ${
         fromMenu ? "!flex justify-center lg:!hidden" : "!hidden lg:!flex"
       }`}
     >
-      <Link href={"/login"}>
-        <T4 color="grey_original">Hello, Sign in</T4>
-        <C3 color="primary_white">Join to us now</C3>
-      </Link>
-    </FlexBox>
+      {isLoggined && userData ? (
+        <div>
+          <span className="text-medium" color="grey_original">
+            Hello, {userData.username}
+          </span>
+          <h2
+            className="text-small cursor-pointer text-grey_dark w-fit hover:text-grey_original"
+            onClick={() => {
+              localStorage.removeItem("token");
+              location.reload();
+            }}
+          >
+            Logout
+          </h2>
+        </div>
+      ) : (
+        <Link href={"/signin"}>
+          <span className="text-small" color="grey_original">
+            Hello, Sign in
+          </span>
+          <h2 className="text-medium" color="primary_white">
+            Join to us now
+          </h2>
+        </Link>
+      )}
+    </section>
   );
 }

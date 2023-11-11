@@ -8,11 +8,7 @@ import { LiaArrowLeftSolid } from "react-icons/lia";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 
-import { DrawerList, DrawerLoginButton, DrawerUl } from "../Styled/SubNav";
-import { Div } from "@/components/Globe/Div";
-import { T3 } from "@/components/Globe/Titles";
-
-import { drawer_list_data } from "@/constants/sub_nav";
+import { drawer_list_data } from "@/constants/subNav";
 
 export default function DrawerComp({
   isOpen,
@@ -35,24 +31,34 @@ export default function DrawerComp({
       overlayOpacity={0.7}
       className="text-black relative overflow-hidden"
     >
-      <DrawerLoginButton type="button" title="sign in">
-        <FaCircleUser /> Hello, Sing In
-      </DrawerLoginButton>
+      <button
+        onClick={() => (window.location.href = "/signin")}
+        className="flex items-center gap-2 py-4 px-8 w-full font-bold text-large text-start bg-secondary_medium text-primary_white"
+        type="button"
+        title="sign in"
+        name="sign in"
+      >
+        <FaCircleUser style={{ fontSize: "1.75rem" }} /> Hello, Sing In
+      </button>
 
-      <Div
+      <section
         style={{ height: "calc(100% - 60.8px)" }}
         className={`overflow-y-auto ${
           isJoin ? "-translate-x-[100%]" : ""
         } transition`}
       >
         {drawer_list_data.map((lst) => (
-          <Div key={lst.id} className="py-6 border-b-2">
-            <T3 className="px-8 mb-3" color="secondary_medium">
+          <section key={lst.id} className="py-6 border-b-2">
+            <h3
+              className="text-large text-secondary_medium font-bold px-8 mb-3"
+              color="secondary_medium"
+            >
               {lst.title}
-            </T3>
-            <DrawerUl>
+            </h3>
+            <ul className="flex flex-col gap-1">
               {lst.list.map((cate) => (
-                <DrawerList
+                <li
+                  className="flex items-center justify-between py-2 px-8 cursor-pointer hover:bg-grey_original"
                   key={cate.id}
                   onClick={() => {
                     setIsJoin(true);
@@ -60,14 +66,14 @@ export default function DrawerComp({
                   }}
                 >
                   {cate.title} <IoIosArrowForward />
-                </DrawerList>
+                </li>
               ))}
-            </DrawerUl>
-          </Div>
+            </ul>
+          </section>
         ))}
-      </Div>
+      </section>
 
-      <Div
+      <section
         className={`text-black absolute w-full top-[60.8px] ${
           isJoin
             ? "translate-x-[0] z-auto opacity-100"
@@ -75,26 +81,32 @@ export default function DrawerComp({
         } transition`}
         style={{ visibility: isJoin ? "visible" : "hidden" }}
       >
-        <DrawerList
-          className="uppercase font-extrabold flex gap-3 !justify-start border-b-2"
+        <li
+          className="flex uppercase font-extrabold items-center py-2 px-8 cursor-pointer hover:bg-grey_original gap-3 !justify-start border-b-2"
           onClick={() => setIsJoin(false)}
         >
           <LiaArrowLeftSolid
             style={{ fontWeight: "900", fontSize: "1.6rem" }}
           />{" "}
           main menu
-        </DrawerList>
-        <T3 className="px-8 mb-3 mt-3" color="secondary_medium">
+        </li>
+        <h3
+          className="text-large text-secondary_medium font-bold px-8 mb-3 mt-3"
+          color="secondary_medium"
+        >
           {selectedList.title}
-        </T3>
+        </h3>
         {selectedList.list?.map((cate: any) => (
           <Link key={cate.id} href={cate.link}>
-            <DrawerList key={cate.id} className="capitalize text-sm">
+            <li
+              key={cate.id}
+              className="capitalize text-sm flex items-center justify-between py-2 px-8 cursor-pointer hover:bg-grey_original"
+            >
               {cate.title}
-            </DrawerList>
+            </li>
           </Link>
         ))}
-      </Div>
+      </section>
     </Drawer>
   );
 }

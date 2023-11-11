@@ -1,45 +1,46 @@
 import { useId } from "react";
-import { Button } from "@/components/Globe/Button";
-import { Div } from "@/components/Globe/Div";
 import { categories } from "@/constants/categories";
-import { search_history } from "@/constants/search-history";
+import SelectComp from "@/components/Select";
+import Select from "react-select/async";
 import { BsSearch } from "react-icons/bs";
-import Select from "react-select";
+import axios from "axios";
 
 export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
   const randId = useId();
+
+  const getProducts = (input: string) => {
+    return axios
+      .get(`https://dummyjson.com/products/search?q=${input}`)
+      .then((res) => {
+        // Transform the data into the format expected by react-select
+        return res.data.products.map((product: Product) => ({
+          label: product.title,
+          value: product.id,
+        }));
+      });
+  };
+
   return (
-    <Div
+    <section
       className={`flex-1 items-center px-2 ${
         fromMenu ? "!flex justify-center sm:!hidden" : "!hidden sm:!flex"
       }`}
     >
-      <Select
-        instanceId={randId}
-        className="text-black w-[130px]"
-        isSearchable={false}
-        placeholder="All Departments"
-        value={"All Departments"}
-        onChange={() => {}}
+      <SelectComp
+        className="w-full min-w-[100px] max-w-[180px] h-[38px] rounded-s-md"
         options={[
           { value: "all", label: "All Departments" },
           ...(categories as any),
         ]}
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            borderRadius: "4px 0 0 4px",
-            textWrap: "nowrap",
-          }),
-        }}
       />
       <Select
         instanceId={randId}
-        className="flex-1 text-black"
+        className="flex-1 min-w-[150px] text-black z-[1000]"
         placeholder="Search Amazon"
-        value={""}
-        onChange={() => {}}
-        options={search_history as any}
+        onChange={(e: any) => {
+          location.href = `/product/${e.value}`;
+        }}
+        loadOptions={getProducts}
         styles={{
           control: (provided) => ({
             ...provided,
@@ -48,11 +49,11 @@ export default function Search({ fromMenu = false }: { fromMenu?: boolean }) {
           }),
         }}
       />
-      <Div className="flex items-center">
-        <Button className="h-[38px] rounded">
+      <div className="flex items-center">
+        <button className="p-2 px-4 h-[38px] rounded-e-md flex items-center justify-center bg-primary_orange text-primary_black hover:bg-secondary_yellow">
           <BsSearch />
-        </Button>
-      </Div>
-    </Div>
+        </button>
+      </div>
+    </section>
   );
 }

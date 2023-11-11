@@ -3,5 +3,33 @@
 @tailwind utilities;
 
 body {
-  background-color: #ffffff;
+  background-color: #dddddd;
+}
+
+/* width */
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  background: #dddddd;
+  border-radius: 5px;
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #f19d38;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #f19d38;
+}
+
+/* hide scrollbar */
+.scrollbar-hidden::-webkit-scrollbar {
+  height: 0px;
 }
