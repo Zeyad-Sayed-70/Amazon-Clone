@@ -1,3 +1,4 @@
+import Spinner from "@/components/Spinner";
 import { ProductDetailsContext } from "@/context/productDetail";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import Image from "next/image";
@@ -63,7 +64,7 @@ export default function ProductImages() {
         alt={product?.title || "Product Image"}
       />
 
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Spinner />}>
         <div
           className={`absolute top-0 left-full ml-1 w-[750px] h-[600px] bg-primary_white overflow-hidden z-[100] ${
             isImageHoverd ? "block" : "hidden"

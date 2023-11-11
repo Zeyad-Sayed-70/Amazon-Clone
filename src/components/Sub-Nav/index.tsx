@@ -29,7 +29,7 @@ export default function SubNav() {
         ))}
       </ul>
 
-      <Suspense fallback={<h1>loading...</h1>}>
+      <Suspense fallback={<h1>opening...</h1>}>
         {/* This code need some changes to make sure the animation not go away */}
         {isOpen && <DrawerComp isOpen={isOpen} setIsOpen={setIsOpen} />}
       </Suspense>

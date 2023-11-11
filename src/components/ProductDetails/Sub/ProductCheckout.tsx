@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import AddToCartButton from "./AddToCartButton";
 import { create_checkout_session } from "@/lib/create-checkout-session";
+import { getCityAndCountry } from "@/lib/getCityAndCountry";
 
 export default function ProductCheckout() {
   const { product } = useContext(ProductDetailsContext);
@@ -36,16 +37,15 @@ export default function ProductCheckout() {
           href={"#"}
           className="flex items-center gap-1 text-medium text-secondary_blue hover:text-secondary_orange"
         >
-          <IoLocationOutline className="text-grey_disabled" /> Deliver to Egypt
+          <IoLocationOutline className="text-grey_disabled" /> Deliver to{" "}
+          {getCityAndCountry()}
         </Link>
         <h2 className="text-green-700 text-xlarge my-3">In Stock</h2>
         <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
         <AddToCartButton quantity={quantity} />
         <button
           onClick={() =>
-            create_checkout_session([
-              { quantity: 1, product: product as Product },
-            ])
+            create_checkout_session([{ quantity, product: product as Product }])
           }
           disabled={!isLoggined}
           className={`py-1.5 w-full rounded-full bg-orange-400 hover:bg-orange-500 text-medium my-3 disabled:opacity-50 disabled:bg-gray-300 disabled:hover:bg-gray-300`}

@@ -1,11 +1,12 @@
 "use client";
 import "./globals.css";
-import { Suspense, lazy, useContext } from "react";
+import { Suspense, lazy } from "react";
 import { Lato } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { LocalStateProvider } from "@/context/localStorage";
 import Navbar from "@/components/Navbar";
-import SafeGateProvider, { SafeGateContext } from "@/context/safeGate";
+import SafeGateProvider from "@/context/safeGate";
+import Spinner from "@/components/Spinner";
 
 const SubNav = lazy(() => import("@/components/Sub-Nav"));
 const SigninReminder = lazy(
@@ -52,7 +53,7 @@ export default function RootLayout({
             {/* Render the children passed in as a prop */}
             {children}
             {hideThis && (
-              <Suspense fallback={<h1>Loading...</h1>}>
+              <Suspense fallback={<Spinner />}>
                 <SigninReminder />
                 <Footer />
               </Suspense>

@@ -14,7 +14,7 @@ export default function LangSelect({
       <Select
         options={[
           { label: "en-🇺🇸", value: "en-🇺🇸" },
-          { label: "ar-eg", value: "ar-eg" },
+          // { label: "ar-eg", value: "ar-eg" },
         ]}
       />
     </section>

@@ -5,6 +5,7 @@ import { TbFilterCog } from "react-icons/tb";
 import { useParams } from "next/navigation";
 import useCategories from "@/hooks/useCategories";
 import { ProductsContext } from "@/context/products";
+import Spinner from "../Spinner";
 
 const SideBarDrawer = lazy(() => import("./Sub/SideBarDrawer"));
 
@@ -31,7 +32,7 @@ export default function Index() {
   return (
     <main className="lg:flex gap-4 p-3 lg:p-0 bg-primary_white">
       <div className="hidden lg:!block">
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense fallback={<Spinner />}>
           <SideBar />
         </Suspense>
       </div>
@@ -46,7 +47,7 @@ export default function Index() {
         </button>
 
         {isOpen && (
-          <Suspense fallback={<h2>Loading...</h2>}>
+          <Suspense fallback={<Spinner />}>
             <SideBarDrawer
               products={products}
               isOpen={isOpen}
@@ -56,7 +57,7 @@ export default function Index() {
         )}
       </div>
 
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Spinner />}>
         <CategoryDisplay />
       </Suspense>
     </main>

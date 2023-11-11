@@ -1,3 +1,4 @@
+import Spinner from "@/components/Spinner";
 import useCategories from "@/hooks/useCategories";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,8 +15,8 @@ export default function CBoxSingle({ category }: { category: string }) {
     return (
       <>
         <section className="p-4 bg-primary_white">
-          <div className="w-[350px] h-[300px] flex justify-center items-center">
-            Loading...
+          <div className="w-full h-[300px] flex justify-center items-center">
+            <Spinner />
           </div>
         </section>
       </>

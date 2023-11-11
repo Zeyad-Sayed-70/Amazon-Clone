@@ -10,7 +10,7 @@ export function getCityAndCountry() {
     userCity = userTimeZone.split("/")[1];
     userCountry = (timeZoneCityToCountry as any)[userCity];
 
-    return `${userCountry} | ${userCity}`;
+    return `${userCountry}. ${userCity}`;
   }
 
   return null;

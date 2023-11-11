@@ -4,6 +4,7 @@ import ProductCart from "@/components/Cart/Sub/ProductCart";
 import { LocalStateContext } from "@/context/localStorage";
 import dynamic from "next/dynamic";
 import { create_checkout_session } from "@/lib/create-checkout-session";
+import Spinner from "../Spinner";
 
 const MultiCarousel = dynamic(
   () => import("@/components/Home/Sub/MultiCarousel"),
@@ -81,8 +82,9 @@ export default function Index() {
               </label>
             </div>
             <button
+              disabled={ITEMSCOUNT === 0}
               onClick={() => create_checkout_session(localState)}
-              className="py-2 w-full text-medium font-bold bg-yellow-400 hover:bg-yellow-500 rounded-lg mt-4"
+              className="py-2 w-full text-medium font-bold bg-yellow-400 hover:bg-yellow-500 rounded-lg mt-4 disabled:bg-grey_original disabled:cursor-not-allowed disabled:opacity-50"
             >
               Proceed to checkout
             </button>
@@ -91,7 +93,7 @@ export default function Index() {
           {/* International top sellers */}
           <div className="bg-primary_white p-4">
             <h2 className="text-large font-bold">International top sellers</h2>
-            <Suspense fallback="loading...">
+            <Suspense fallback={<Spinner />}>
               <TopSellersProducts />
             </Suspense>
           </div>
@@ -99,7 +101,7 @@ export default function Index() {
       </article>
 
       {/* Products Carousel */}
-      <Suspense fallback="loading...">
+      <Suspense fallback={<Spinner />}>
         <MultiCarousel
           skip={50}
           title="New international customers purchased"

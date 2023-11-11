@@ -5,10 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 require("dotenv").config();
 
+// Use middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// Export app
 module.exports = { app };
 
 // Stripe
@@ -23,7 +25,7 @@ app.get("/", (req, res) => {
   }
 });
 
-// Declare the User Account Router
+// Use router
 app.use("/user", require("./src/Routers/userAccount"));
 app.use("/products", require("./src/Routers/products"));
 
@@ -35,4 +37,5 @@ mongoose
   .then(() => console.log("Connection to DB: OK"))
   .catch((err) => console.log(err));
 
+// Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

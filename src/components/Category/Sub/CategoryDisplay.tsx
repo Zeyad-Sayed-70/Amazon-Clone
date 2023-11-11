@@ -5,6 +5,7 @@ import { formatDate } from "@/lib/dateFormatting";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 import { ProductsContext } from "@/context/products";
 import { useParams } from "next/navigation";
+import Spinner from "@/components/Spinner";
 
 export default function CategoryDisplay() {
   const { products, loading } = useContext(ProductsContext);
@@ -43,11 +44,7 @@ export default function CategoryDisplay() {
             Not Found Products
           </h2>
         )}
-        {loading && (
-          <h2 className="h-[100vh] w-full text-xlarge font-bold text-grey_disabled text-center my-6">
-            Loading...
-          </h2>
-        )}
+        {loading && <Spinner />}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-y-3 justify-center">
           {products?.map((product) => (

@@ -1,3 +1,4 @@
+import Spinner from "@/components/Spinner";
 import useCategories from "@/hooks/useCategories";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +23,7 @@ export default function CBoxMulti({
       <>
         <section className="p-4 bg-primary_white">
           <div className="w-[320px] h-[320px] flex justify-center items-center">
-            Loading...
+            <Spinner />
           </div>
         </section>
       </>

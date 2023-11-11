@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { ProductDetailsContext } from "@/context/productDetail";
 import ProductInfo from "./Sub/ProductInfo";
 import Reviews from "./Sub/Reviews";
+import Spinner from "../Spinner";
 
 export default function Index() {
   const { productId } = useParams();
@@ -46,7 +47,7 @@ export default function Index() {
           style={{ height: "calc(100% - 109px)" }}
           className="fixed w-full top-[109px] left-0 z-50 bg-primary_white flex justify-center items-center font-bold text-xlarge"
         >
-          Loading...
+          <Spinner />
         </div>
       )}
       <PageChains pages={pages} />
