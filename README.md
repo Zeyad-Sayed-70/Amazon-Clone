@@ -1,5 +1,7 @@
 # Amazon-Clone Project
 
+<img src="./public/logo.png" width=160  >
+
 ## Description
 
 The Amazon-clone project is a streamlined web application replicating the fundamental features of Amazon. Users can easily browse products, add them to a cart 🛒, and seamlessly proceed to checkout. This project serves as a hands-on learning experience for me 💻, allowing me to enhance my skills in both front-end and back-end development. By integrating payment gateways, I gained valuable insights into the complexities of building a comprehensive e-commerce site 🌐.
