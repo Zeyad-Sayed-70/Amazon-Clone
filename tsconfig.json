@@ -24,10 +24,6 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-      "@/*": [
-        "./src/*"
-      ]
-
     },
     "forceConsistentCasingInFileNames": true
   },
@@ -35,7 +31,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-
     ".next/types/**/*.ts",
     "server/index.js",
     "server/src/Routers/userAccount.js",
@@ -43,12 +38,7 @@
     "server/src/Controllers/login.js",
     "server/src/Controllers/register.js"
   ],
-  "exclude": ["node_modules"]
-
-    ".next/types/**/*.ts"
-  ],
   "exclude": [
     "node_modules"
   ]
-
 }
