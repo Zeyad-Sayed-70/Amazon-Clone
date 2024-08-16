@@ -20,6 +20,8 @@ export default function Index() {
   const { products, setProducts, setProductsInstance, setLoading } =
     useContext(ProductsContext);
 
+    console.log('data', data)
+
   // Set the products when the data is loaded
   useEffect(() => {
     if (!data || data.length === 0) return;

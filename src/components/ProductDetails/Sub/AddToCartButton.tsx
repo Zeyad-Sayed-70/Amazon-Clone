@@ -8,7 +8,7 @@ export default function AddToCartButton({ quantity }: { quantity: number }) {
     useContext(LocalStateContext);
 
   let isInCart: Boolean = localState?.some(
-    (item: any) => item.product.id === product?.id
+    (item: any) => item.product?.id === product?.id
   );
 
   return (

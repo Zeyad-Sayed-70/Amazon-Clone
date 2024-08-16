@@ -2,9 +2,8 @@
 import Categories from "@/components/Home";
 import DemoCarousel from "@/components/Home/Sub/Carousel";
 // import MultiCarousel from "@/components/Home/Sub/MultiCarousel";
-import { Suspense, useContext } from "react";
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
-import { SafeGateContext } from "@/context/safeGate";
 import Spinner from "@/components/Spinner";
 
 const MultiCarousel = dynamic(
@@ -23,9 +22,9 @@ export default function Home() {
           <Suspense fallback={<Spinner />}>
             <Categories
               categories={[
-                "lighting",
+                "mobile-accessories",
                 "laptops",
-                "skincare",
+                "skin-care",
                 "fragrances",
                 "mens-shirts",
                 "womens-dresses",
@@ -42,7 +41,7 @@ export default function Home() {
             <Categories
               categories={[
                 "motorcycle",
-                "automotive",
+                "tablets",
                 "sunglasses",
                 "womens-jewellery",
                 "tops",

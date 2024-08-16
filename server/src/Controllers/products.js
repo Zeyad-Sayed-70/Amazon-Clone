@@ -19,13 +19,22 @@ const createProductsObject = async (req, res) => {
 const fetchProducts = async (req, res) => {
   try {
     const { limit, select, skip } = req.query;
-    console.log(select?.split(","));
-    const products = await Products.find({})
-      .limit(limit || 0)
-      .skip(skip || 0)
-      .select(select?.split(",").length > 0 ? select.split(",") : "");
 
-    res.status(201).json({ msg: "Products fetched successfully", products });
+    // const products = await Products.find({})
+    //   .limit(limit || 0)
+    //   .skip(skip || 0)
+    //   .select(select?.split(",").length > 0 ? select.split(",") : "");
+    fetch(`https://dummyjson.com/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.products.length === 0)
+          return res.status(400).json({ msg: "No products found" });
+
+        res.status(201).json({
+          msg: "Products fetched successfully",
+          products: data.products,
+        });
+      });
   } catch (error) {
     console.log(error);
   }
@@ -35,9 +44,15 @@ const fetchProductById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const product = await Products.findOne({ id });
+    fetch(`https://dummyjson.com/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data) return res.status(400).json({ msg: "No product found" });
 
-    res.status(201).json({ msg: "Product fetched successfully", product });
+        res
+          .status(201)
+          .json({ msg: "Products fetched successfully", product: data });
+      });
   } catch (error) {
     console.log(error);
   }
@@ -47,9 +62,19 @@ const fetchProductsByCategory = async (req, res) => {
   try {
     const { category } = req.params;
 
-    const products = await Products.find({ category });
+    // const products = await Products.find({ category });
 
-    res.status(201).json({ msg: "Products fetched successfully", products });
+    fetch(`https://dummyjson.com/products/category/${category}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.products.length === 0)
+          return res.status(400).json({ msg: "No products found" });
+
+        res.status(201).json({
+          msg: "Products fetched successfully",
+          products: data.products,
+        });
+      });
   } catch (error) {
     console.log(error);
   }
@@ -57,11 +82,21 @@ const fetchProductsByCategory = async (req, res) => {
 
 const fetchCategories = async (req, res) => {
   try {
-    const data = await Categories.find();
-    const { categories } = data[0];
-    res
-      .status(201)
-      .json({ msg: "Categories fetched successfully", categories });
+    // const data = await Categories.find();
+    // const { categories } = data[0];
+    // res
+    //   .status(201)
+    //   .json({ msg: "Categories fetched successfully", categories });
+    fetch(`https://dummyjson.com/products/categories`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.length === 0)
+          return res.status(400).json({ msg: "No Categories found" });
+
+        res
+          .status(201)
+          .json({ msg: "Categories fetched successfully", categories: data });
+      });
   } catch (error) {
     console.log(error);
   }

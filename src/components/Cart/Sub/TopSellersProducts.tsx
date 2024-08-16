@@ -6,7 +6,7 @@ export default function TopSellersProducts() {
   const { products } = useProducts({ limit: 10, skip: 20 });
   return (
     <section>
-      {products?.map((product) => (
+      {products?.slice(0, 6).map((product) => (
         <ProductSuggestion key={product.id} product={product} />
       ))}
     </section>

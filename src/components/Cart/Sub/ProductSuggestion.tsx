@@ -8,7 +8,7 @@ export default function ProductSuggestion({ product }: { product: Product }) {
     useContext(LocalStateContext);
 
   let isInCart: Boolean = localState?.some(
-    (item: any) => item.product.id === product?.id
+    (item: any) => item.product?.id === product?.id
   );
 
   if (product)

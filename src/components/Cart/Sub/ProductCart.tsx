@@ -28,7 +28,7 @@ export default function ProductCart({
 
     // Map over the old values and update the quantity if it matches the product id.
     const newValues = oldValues.map((item: any) => {
-      if (item.product.id === product?.id) item.quantity = quan;
+      if (item.product?.id === product?.id) item.quantity = quan;
 
       return item;
     });
@@ -42,12 +42,14 @@ export default function ProductCart({
 
   function deleteItem(product: Product) {
     const newValue = localState.filter(
-      (item) => item.product.id !== product.id
+      (item) => item.product?.id !== product.id
     );
     setLocalState(newValue);
     // Save the new values to local storage.
     window.localStorage.setItem(key, JSON.stringify(newValue));
   }
+
+  if (!product) return <></>;
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-3">

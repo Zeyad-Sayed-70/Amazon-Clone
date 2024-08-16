@@ -26,8 +26,9 @@ export default function Index() {
   const SUBTOTAL =
     localState?.length > 0
       ? localState
-          ?.map((item) => item.product.price * item.quantity)
+          ?.map((item) => item.product?.price * item.quantity)
           .reduce((prev, curr) => prev + curr)
+          .toFixed(2)
       : 0;
 
   return (
@@ -50,7 +51,7 @@ export default function Index() {
             {localState && localState.length > 0 ? (
               localState?.map((item: any) => (
                 <ProductCart
-                  key={item.product.id}
+                  key={item.product?.id}
                   product={item.product}
                   quantity={item.quantity}
                 />
