@@ -6,6 +6,9 @@
   "scripts": {
     "start": "npx nodemon ./index.js"
   },
+    "engines": {
+    "node": ">=16.0.0"
+  },
   "keywords": [
     "server",
     "side"
