@@ -7,6 +7,7 @@ import { LocalStateProvider } from "@/context/localStorage";
 import Navbar from "@/components/Navbar";
 import SafeGateProvider from "@/context/safeGate";
 import Spinner from "@/components/Spinner";
+import ServerStatusAlert from "@/components/ServerStatsAlert";
 
 const SubNav = lazy(() => import("@/components/Sub-Nav"));
 const SigninReminder = lazy(
@@ -22,6 +23,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
   const router = usePathname();
   const hideThis = !["/signin", "/register"].includes(router);
   return (
@@ -34,6 +37,7 @@ export default function RootLayout({
         />
       </head>
       <body className={lato.className}>
+        <ServerStatusAlert />
         <SafeGateProvider>
           <LocalStateProvider>
             {/* Render the Navbar and SubNav components */}
